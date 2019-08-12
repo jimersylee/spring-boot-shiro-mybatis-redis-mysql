@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sh</groupId>
-    <artifactId>spring-boot-shiro-demo</artifactId>
+    <artifactId>spring-boot-shiro-mybatis-redis-mysql</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-shiro-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <description>A demo of shiro</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.3</version>
         </dependency>
         <!-- StringUitlS工具 -->
         <dependency>
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <version>1.2.59</version>
         </dependency>
     </dependencies>
 

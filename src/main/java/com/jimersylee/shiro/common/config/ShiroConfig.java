@@ -16,6 +16,7 @@ import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -43,6 +44,7 @@ public class ShiroConfig {
 
     /**
      * 开启Shiro-aop注解支持
+     *
      * @Attention 使用代理方式所以需要开启代码支持
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 8:38
@@ -56,11 +58,12 @@ public class ShiroConfig {
 
     /**
      * Shiro基础配置
+     *
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 8:42
      */
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactory(SecurityManager securityManager){
+    public ShiroFilterFactoryBean shiroFilterFactory(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
@@ -77,6 +80,7 @@ public class ShiroConfig {
 
     /**
      * 安全管理器
+     *
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 10:34
      */
@@ -94,6 +98,7 @@ public class ShiroConfig {
 
     /**
      * 身份验证器
+     *
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 10:37
      */
@@ -107,6 +112,7 @@ public class ShiroConfig {
     /**
      * 凭证匹配器
      * 将密码校验交给Shiro的SimpleAuthenticationInfo进行处理,在这里做匹配配置
+     *
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 10:48
      */
@@ -122,6 +128,7 @@ public class ShiroConfig {
 
     /**
      * 配置Redis管理器
+     *
      * @Attention 使用的是shiro-redis开源插件
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 11:06
@@ -129,16 +136,16 @@ public class ShiroConfig {
     @Bean
     public RedisManager redisManager() {
         RedisManager redisManager = new RedisManager();
-        redisManager.setHost(host);
-        redisManager.setPort(port);
+        redisManager.setHost(host + ":" + port);
         redisManager.setTimeout(timeout);
-//        redisManager.setPassword(password);
+        redisManager.setPassword(password);
         return redisManager;
     }
 
     /**
      * 配置Cache管理器
      * 用于往Redis存储权限和角色标识
+     *
      * @Attention 使用的是shiro-redis开源插件
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 12:37
@@ -155,16 +162,18 @@ public class ShiroConfig {
 
     /**
      * SessionID生成器
+     *
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 13:12
      */
     @Bean
-    public ShiroSessionIdGenerator sessionIdGenerator(){
+    public ShiroSessionIdGenerator sessionIdGenerator() {
         return new ShiroSessionIdGenerator();
     }
 
     /**
      * 配置RedisSessionDAO
+     *
      * @Attention 使用的是shiro-redis开源插件
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 13:44
@@ -181,6 +190,7 @@ public class ShiroConfig {
 
     /**
      * 配置Session管理器
+     *
      * @Author Jimersy Lee
      * @CreateTime 2019/6/12 14:25
      */
